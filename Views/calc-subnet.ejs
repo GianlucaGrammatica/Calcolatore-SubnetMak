@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>calc-subnet</title>
     <link rel="stylesheet" href="style.css">
-    
+
 </head>
 
 <body>
+    <a href="<%= locals.baseUrl %>index"><h5>Back</h5></a>
     <h1>calc-.-subnet</h1>
     <br>
     <form action="<%= locals.baseUrl %>calc-subnet" method="post">
@@ -29,6 +30,43 @@
             </div>
         </div>
     </form>
+
+    <% if (locals.showRes) { %>
+        <br>
+        <div class="res">
+            <h2>IP: <%= locals.ip %></h2>
+            <h2>CIDR: <%= locals.subnet.subnetMaskLength %></h2>
+            <h2>subnetMask: <%= locals.subnet.subnetMask %></h2>
+            <h2>network: <%= locals.subnet.networkAddress %></h2>
+            <h2>broadcast: <%= locals.subnet.broadcastAddress %></h2>
+            <h2>firstHost: <%= locals.subnet.firstAddress %></h2>
+            <h2>lastHost: <%= locals.subnet.lastAddress %></h2>
+            <h2>availableHosts: <%= locals.subnet.numHosts %></h2>
+        </div>
+        <% } %>
 </body>
 
 </html>
+
+<!--
+
+    "ip": "192.168.1.0",
+    "cidr": 27,
+    "subnetMask": "255.255.255.224",
+    "network": "192.168.1.0",
+    "broadcast": "192.168.1.31",
+    "firstHost": "192.168.1.1",
+    "lastHost": "192.168.1.30",
+    "availableHosts": 30
+
+    // { networkAddress: '192.168.1.128',
+//   firstAddress: '192.168.1.129',
+//   lastAddress: '192.168.1.190',
+//   broadcastAddress: '192.168.1.191',
+//   subnetMask: '255.255.255.192',
+//   subnetMaskLength: 26,
+//   numHosts: 62,
+//   length: 64,
+
+-->
+

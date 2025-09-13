@@ -1,6 +1,6 @@
 const express = require('express')
 const ejs = require('ejs');
-const ip = require('ip');
+const ipFun = require('ip');
 
 const portNumber = 2000;
 const ipAddress = '127.0.0.1';
@@ -26,30 +26,22 @@ app.get(['/', '/index', 'home'], (req, res) => {
 });
 
 app.get(['/calc-subnet'], (req, res) => {
-  res.render('calc-subnet', { error: null });
+  res.render('calc-subnet', {showRes: false});
 });
 
 app.post(['/calc-subnet'], (req, res) => {
+
   let ip = req.body.ip;
   let cidr = parseInt(req.body.cidr);
 
-    console.log(`Blup: ${ip} - ${cidr}`)
+  console.log(`Blup: ${ip} - ${cidr}`)
 
-  let array = ip.split(".");
-  let finalthing ="";
+  subnetMask = ipFun.fromPrefixLen(cidr);
+  let subnet = ipFun.subnet(ip, subnetMask);
 
-  console.log(`eeeee: ${array}`)
+  console.log(`subnetMask: ${subnet}`, subnet)
 
-  array.forEach(cuartino => {
-    finalthing += toBase(cuartino, 2);
-  });
-
-  let neededBits = 32 - cidr;
-
-  console.log(finalthing)
-  let bitUsati = finalthing.slice(-neededBits)
-
-  console.log(`naaaa: ${finalthing} titi ${bitUsati}`)
+  res.render('calc-subnet', {showRes: true, subnet: subnet , ip: ip})
 });
 
 
