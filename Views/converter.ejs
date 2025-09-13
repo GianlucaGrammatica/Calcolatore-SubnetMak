@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>converter</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <a href="<%= locals.baseUrl %>index"><h5>Back</h5></a>
+    <h1>converter :^</h1>
+    <br>
+    <form action="<%= locals.baseUrl %>converter" method="post">
+        <div class="nii">
+            <div class="duu">
+                <h3>Number:</h3>
+                <input type="number" name="number" id="number">
+            </div>
+            <br>
+            <div class="duu">
+                <input type="submit" value="Submit">
+            </div>
+        </div>
+    </form>
+
+    <% if (locals.showRes) { %>
+        <br>
+        <div class="res">
+            <h2><%= locals.results.base %> in:</h2>
+            <br>
+            <h2>bin: <%= locals.results.bin %></h2>
+            <h2>oct: <%= locals.results.oct %></h2>
+            <h2>hex: <%= locals.results.hex %></h2>
+        </div>
+        <% } %>
+</body>
+
+</html>
+
+<!--
+bin: 0,
+    oct: 0,
+    hex: 0
+
+    "ip": "192.168.1.0",
+    "cidr": 27,
+    "subnetMask": "255.255.255.224",
+    "network": "192.168.1.0",
+    "broadcast": "192.168.1.31",
+    "firstHost": "192.168.1.1",
+    "lastHost": "192.168.1.30",
+    "availableHosts": 30
+
+    // { networkAddress: '192.168.1.128',
+//   firstAddress: '192.168.1.129',
+//   lastAddress: '192.168.1.190',
+//   broadcastAddress: '192.168.1.191',
+//   subnetMask: '255.255.255.192',
+//   subnetMaskLength: 26,
+//   numHosts: 62,
+//   length: 64,
+
+-->
+

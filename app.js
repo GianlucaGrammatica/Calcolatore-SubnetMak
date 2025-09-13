@@ -29,6 +29,10 @@ app.get(['/calc-subnet'], (req, res) => {
   res.render('calc-subnet', {showRes: false});
 });
 
+app.get(['/converter'], (req, res) => {
+  res.render('converter', {showRes: false});
+});
+
 app.post(['/calc-subnet'], (req, res) => {
 
   let ip = req.body.ip;
@@ -42,6 +46,28 @@ app.post(['/calc-subnet'], (req, res) => {
   console.log(`subnetMask: ${subnet}`, subnet)
 
   res.render('calc-subnet', {showRes: true, subnet: subnet , ip: ip})
+});
+
+app.post(['/converter'], (req, res) => {
+
+  let number = req.body.number;
+
+  console.log(`Clurk: ${number}`)
+
+  let results = {
+    base: number,
+    bin: 0,
+    oct: 0,
+    hex: 0
+  }
+
+  results.bin = toBase(number, 2);
+  results.oct = toBase(number, 8);
+  results.hex = toBase(number, 16);
+
+  console.log(`yaaa:`, results)
+
+  res.render('converter', {showRes: true, results: results})
 });
 
 
