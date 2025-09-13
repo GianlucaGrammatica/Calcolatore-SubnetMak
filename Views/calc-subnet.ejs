@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calc-subnet</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+    <h1>calc-.-subnet</h1>
+    <br>
+    <form action="<%= locals.baseUrl %>calc-subnet" method="post">
+        <div class="nuu">
+            <div class="duu">
+                <h3>IP:</h3>
+                <input type="text" name="ip" id="ip">
+            </div>
+            <br>
+            <div class="duu">
+                <h3>CIDR:</h3>
+                <input type="number" name="cidr" id="cidr">
+            </div>
+            <br>
+            <div class="duu">
+                <input type="submit" value="Submit">
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
